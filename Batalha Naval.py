@@ -1,3 +1,5 @@
+#Matheus Soares Santos - 31895263
+#Wanderson Bezerra de Lima - 31895591
 import random
 
 def inicializarGrid():
@@ -108,6 +110,7 @@ def main():
     preencherAleatorioCruzador(grid)
     preencherAleatorioSubmarino(grid)
     '''
+    #Teste para posicionar 
     posiciona_porta_avioes(grid,2,2,True)
     posiciona_encouracado(grid,8,2,False)
     posiciona_cruzador(grid,3,4,False)
@@ -116,7 +119,6 @@ def main():
     posiciona_porta_avioes(grid,8,2,False)
     print("\n")
     imprimir(grid)
-    imprimirHide(grid)
     '''
     for i in range(20,0,-1):
             verificador = False
