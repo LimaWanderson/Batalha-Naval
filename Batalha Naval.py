@@ -100,7 +100,6 @@ def preencherAleatorioPortaAvioes(grid):
     while verificador == False:
             col,lin,pos = aleatorio(6)
             verificador = posiciona_porta_avioes(grid,lin,col,pos)
-   
 def main():
     grid = inicializarGrid()
     imprimir(grid)
