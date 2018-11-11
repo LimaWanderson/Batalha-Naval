@@ -1,3 +1,5 @@
+#Matheus Soares Santos - 31895263
+#Wanderson Bezerra de Lima - 31895591
 import random
 
 def inicializarGrid():
@@ -23,90 +25,36 @@ def imprimirHide(grid):
                     else:
                             print(grid[i][j], end = " ")
             print("\n")
-                    
-def posiciona_porta_avioes(grid, lin, col, pos):
-    if not pos and col<6 and lin<10:
-            for i in range(col, col+5):
+
+def posiciona(grid, lin, col, pos, maximo, simbolo):
+    if not pos and col<maximo and lin<10:
+            for i in range(col, col + 10 - maximo + 1):
                     if grid[lin][i] != '.':
-                            #print('Espaço ocupado!\nVerifique a posição escolhida')
                             return False
-            for i in range(col, col+5):
-                    grid[lin][i] = "P"
+            for i in range(col, col +  10 - maximo + 1):
+                    grid[lin][i] = simbolo
             return True
-    elif pos and lin<6 and col<10:
-            for i in range(lin, lin+5):
+    elif pos and lin<maximo and col<10:
+            for i in range(lin, lin +  10 - maximo + 1):
                     if grid[i][col] != '.':
-                            #print('Espaço ocupado!\nVerifique a posição escolhida')
                             return False
-            for i in range(lin, lin+5):
-                    grid[i][col] = "P"
+            for i in range(lin, lin +  10 - maximo + 1):
+                    grid[i][col] = simbolo
             return True
     else:
-            #print("Não é possível posicionar o Porta Aviões")
             return False
+        
+def posiciona_porta_avioes(grid, lin, col, pos):
+    posiciona(grid, lin, col, pos, 6, 'P')
 
 def posiciona_encouracado(grid, lin, col, pos):
-    if not pos and col<7 and lin<10:
-            for i in range(col, col+4):
-                    if grid[lin][i] != '.':
-                            #print('Espaço ocupado!\nVerifique a posição escolhida')
-                            return False
-            for i in range(col, col+4):
-                    grid[lin][i] = "E"
-            return True
-    elif pos and lin<7 and col<10:
-            for i in range(lin, lin+4):
-                    if grid[i][col] != '.':
-                            #print('Espaço ocupado!\nVerifique a posição escolhida')
-                            return False
-            for i in range(lin, lin+4):
-                    grid[i][col] = "E"
-            return True
-    else:
-            #print("Não é possível posicionar o Encouraçado")
-            return False
+    posiciona(grid, lin, col, pos, 7, 'E')
 
 def posiciona_cruzador(grid, lin, col, pos):
-    if not pos and col<8 and lin<10:
-            for i in range(col, col+3):
-                    if grid[lin][i] != '.':
-                            #print('Espaço ocupado!\nVerifique a posição escolhida')
-                            return False
-            for i in range(col, col+3):
-                    grid[lin][i] = "C"
-            return True
-    elif pos and lin<8 and col<10:
-            for i in range(lin, lin+3):
-                    if grid[i][col] != '.':
-                            #print('Espaço ocupado!\nVerifique a posição escolhida')
-                            return False
-            for i in range(lin, lin+3):
-                    grid[i][col] = "C"
-            return True
-    else:
-            #print("Não é possível posicionar o Cruzador")
-            return False
-
+    posiciona(grid, lin, col, pos, 8, 'C')
+    
 def posiciona_submarino(grid, lin, col, pos):
-    if not pos and col<9 and lin<10:
-            for i in range(col, col+2):
-                    if grid[lin][i] != '.':
-                            #print('Espaço ocupado!\nVerifique a posição escolhida')
-                            return False
-            for i in range(col, col+2):
-                    grid[lin][i] = "S"
-            return True
-    elif pos and lin<9 and col<10:
-            for i in range(lin, lin+2):
-                    if grid[i][col] != '.':
-                            #print('Espaço ocupado!\nVerifique a posição escolhida')
-                            return False
-            for i in range(lin, lin+2):
-                    grid[i][col] = "S"
-            return True
-    else:
-            #print("Não é possível posicionar o Submarino")
-            return False
+    posiciona(grid, lin, col, pos, 9, 'S')
     
 def atirar(grid,lin,col):
     if grid[lin][col] == 'x' or grid[lin][col] == 'X':
@@ -160,10 +108,9 @@ def main():
     preencherAleatorioPortaAvioes(grid)
     preencherAleatorioEncouracado(grid)
     preencherAleatorioCruzador(grid)
-    preencherAleatorioSubmarino(grid)        
-    #print('\n')
-    #imprimir(grid)
+    preencherAleatorioSubmarino(grid)
     '''
+    #Teste para posicionar 
     posiciona_porta_avioes(grid,2,2,True)
     posiciona_encouracado(grid,8,2,False)
     posiciona_cruzador(grid,3,4,False)
@@ -172,7 +119,6 @@ def main():
     posiciona_porta_avioes(grid,8,2,False)
     print("\n")
     imprimir(grid)
-    imprimirHide(grid)
     '''
     for i in range(20,0,-1):
             verificador = False
